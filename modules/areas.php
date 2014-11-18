@@ -27,8 +27,10 @@ class areas {
 		}
 	}
 		// metodos que devuelven valores
-	function getCod()
-	 { return $this->cod;}
+	public function getCod()
+    { 
+        return 1;//$this->cod;
+    }
 	function getDesc()
 	 { return $this->desc;}
 	function getResponsable()

@@ -1,5 +1,5 @@
 ﻿<div class="bar">
-    <a id="new" class="button" href="javascript:void(0);">Nueva Area</a>
+    <a id="newArea" class="button" href="javascript:void(0);">Nueva Area</a>
 </div>
 <table>
     <thead>

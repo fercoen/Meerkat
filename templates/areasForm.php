@@ -1,17 +1,19 @@
-﻿<h2><?php echo $view->label ?></h2>
+﻿<?php error_reporting(E_ALL); ?>
+
+<h2><?php echo $view->label; ?></h2>
 <form name ="area" id="area" method="POST" action="abm_areas.php">
-    <input type="hidden" name="cod" id="cod" value="<?php print $view->areas->getCod() ?>">
+    <input type="hidden" name="cod" id="cod" value="<?php echo $view->area->getCod(); ?>">
     <div>
         <label>Descripción</label>
-        <input type="text" name="desc" id="desc" value = "<?php print $view->areas->getDesc() ?>">
+        <input type="text" name="desc" id="desc" value = "<?php echo $view->area->getDesc(); ?>">
     </div>
     <div>
         <label>Responsable</label>
-        <input type="text" name="responsable" id="responsable" value = "<?php print $view->areas->getResponsable() ?>">
+        <input type="text" name="responsable" id="responsable" value = "<?php echo $view->area->getResponsable(); ?>">
     </div>
     <div>
         <label>Estado</label>
-        <input type="text" name="estado" id="estado" value = "<?php print $view->areas->getEstado() ?>">
+        <input type="text" name="estado" id="estado" value = "<?php echo $view->area->getEstado(); ?>">
     </div>
     <div class="buttonsBar">
         <input id="cancel" type="button" value ="Cancelar" />

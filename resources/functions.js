@@ -43,6 +43,14 @@ $(document).ready(function(){ //cuando el html fue cargado iniciar
         })
     })
 
+    $('#newArea').live('click',function(){
+        params={};
+        params.action="newArea";
+        $('#popupbox').load('abm_areas.php', params,function(){
+            $('#block').show();
+            $('#popupbox').show();
+        })
+    })
 
     $('#client').live('submit',function(){
         var params={};

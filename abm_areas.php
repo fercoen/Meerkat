@@ -1,13 +1,19 @@
 <?php
 require_once('validacion.php'); 
 require_once("include/header.php");
-require_once("menu.php");
 require_once("modules/areas.php");
 require_once("modules/conexion.php");
 require_once("modules/squery.php");
 require_once("modules/funciones.php");
-$action='index';
-if(isset($_POST['action']))
+
+// si no tiene ninguna action por post que abra el listado
+if(!isset($_POST['action'])){
+    $action = 'index';
+    require_once("menu.php");
+}else{
+    $action = $_POST['action'];
+}
+
 $view= new stdClass(); 			// creo una clase standard para contener la vista
 $view->disableLayout=false;		// marca si usa o no el layout , si no lo usa imprime directamente el template
 
@@ -55,9 +61,9 @@ switch ($action)
 
 // si esta deshabilitado el layout solo imprime el template
 if ($view->disableLayout==true)
-{include_once ($view->contentTemplate);}
+{include_once($view->contentTemplate);}
 else
-{include_once ('templates/layout.php');} // el layout incluye el template adentro
+{include_once('templates/layout.php');} // el layout incluye el template adentro
 
 
 ?>
