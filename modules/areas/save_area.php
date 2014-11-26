@@ -8,8 +8,6 @@ include '../../include/conectar.php';
 
 $sql = "insert into areas(des_area,cod_estado,cod_user) values('$des_area','$cod_estado','$cod_user')";
 
-echo $sql;
-
 $result = @mysql_query($sql);
 if ($result){
 	echo json_encode(array(

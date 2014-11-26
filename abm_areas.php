@@ -55,7 +55,7 @@ require_once("menu.php");?>
 		</form>
 	</div>
 	<div id="dlg-buttons">
-		<a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveArea()" style="width:90px">Guardar</a>
+		<a href="#" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveArea();" style="width:90px">Guardar</a>
 		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">Cancelar</a>
 	</div>
 	<script type="text/javascript">
@@ -74,13 +74,13 @@ require_once("menu.php");?>
 			}
 		}
 		function saveArea(){
+            try{
 			$('#fm').form('submit',{
 				url: url,
-				onSubmit: function(){
-					return $(this).form('validate');
+                onSubmit: function(){
+					//return $(this).form('validate');
 				},
 				success: function(result){
-					var result = eval('('+result+')');
 					if (result.errorMsg){
 						$.messager.show({
 							title: 'Error',
@@ -91,7 +91,8 @@ require_once("menu.php");?>
 						$('#dg').datagrid('reload');	// reload the user data
 					}
 				}
-			});
+            });
+            }catch(e){console.log(e.message())}
 		}
 	
 	</script>
