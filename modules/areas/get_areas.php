@@ -9,7 +9,7 @@
 	$rs = mysql_query("select count(*) from areas");
 	$row = mysql_fetch_row($rs);
 	$result["total"] = $row[0];
-	$rs = mysql_query("SELECT cod_area, a.cod_estado, a.cod_user, des_area, desc_estado, nombre_user FROM areas A INNER JOIN estados e ON a.cod_estado = e.cod_estado INNER JOIN usuarios U ON a.cod_user = U.cod_user ORDER BY 2 limit $offset,$rows");
+	$rs = mysql_query("SELECT cod_area, a.cod_estado, a.cod_user, des_area, desc_estado, nombre_user FROM areas a INNER JOIN estados e ON a.cod_estado = e.cod_estado INNER JOIN usuarios u ON a.cod_user = u.cod_user ORDER BY 2 limit $offset,$rows");
 	
 	$items = array();
 	while($row = mysql_fetch_object($rs)){
