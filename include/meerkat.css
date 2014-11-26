@@ -31,7 +31,10 @@ body{
     background:#fefefe;
     border-top:1px solid #dde0e8;
     border-bottom:1px solid #dde0e8;
-    padding:10px;
+	border-left: 0px;
+	border-right: 0px;
+	padding-top: 10px;
+	padding-bottom:10px;
 	height:182px;
 }
 

@@ -4,7 +4,6 @@ class usuarios {
 		 var  $login_usr;
 		 var  $contrasena;
 		 var  $nombre;
-		 var  $apellido;
 	 
 	 function login () {
 		$usu	= mysql_real_escape_string($this->login_usr);
