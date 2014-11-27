@@ -21,7 +21,7 @@
 	<li class="topmenu"><a href="#" style="height:18px;line-height:18px;"><span>ABM's</span></a>
 	<ul>
 		<li><a href="abm_areas.php">Areas</a></li>
-		<li><a href="#">Departamentos</a></li>
+		<li><a href="abm_deptos.php">Departamentos</a></li>
 		<li><a href="usuarioalta.html">Usuarios</a></li>
 		<li><a href="#">Categorias</a></li>
 		<li><a href="#">Proveedores</a></li>

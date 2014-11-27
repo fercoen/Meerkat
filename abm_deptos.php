@@ -3,34 +3,35 @@ require_once('validacion.php');
 require_once("include/header.php");
 require_once("menu.php");?>
 	<br /> <br /> <br />
-	<table id="dg" title="Areas" class="easyui-datagrid" style="width:100%;"
-			url="modules/areas/get_areas.php"
+	<table id="dg" title="Departamentos" class="easyui-datagrid" style="width:100%;"
+			url="modules/deptos/get_deptos.php"
 			toolbar="#toolbar" pagination="true"
 			rownumbers="true" fitColumns="true" singleSelect="true">
 		<thead>
 			<tr>
-				<th field="des_area" width="50">Descripcion</th>
+				<th field="desc_depto" width="50">Descripcion</th>
+				<th field="des_area" width="50">Area</th>
 				<th field="desc_estado" width="50">Estado</th>
 				<th field="nombre_user" width="50">Responsable</th>
 			</tr>
 		</thead>
 	</table>
 	<div id="toolbar">
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newArea()">Nueva Area</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editArea()">Editar/Deshabilitar Area</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newArea()">Nuevo Departamento</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editArea()">Editar/Deshabilitar Departamento</a>
 	</div>
 	
 	<div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
 			closed="true" buttons="#dlg-buttons">
-		<div class="ftitle">Informacion del Area</div>
+		<div class="ftitle">Informacion del Departamento</div>
 		<form id="fm" method="post" novalidate>
 			<div class="fitem" hidden>
-				<label>Codigo:</label>
-				<input name="cod_area" class="easyui-textbox" required="true">
+				<label>Codigo:</label>			
+				<input name="cod_depto" class="easyui-textbox" required="true">
 			</div>
 			<div class="fitem">
 				<label>Descripcion:</label>
-				<input name="des_area" class="easyui-textbox" required="true">
+				<input name="desc_depto" class="easyui-textbox" required="true">
 			</div>
 			<div class="fitem">
 				<label>Responsable:</label>
@@ -42,6 +43,18 @@ require_once("menu.php");?>
 						panelHeight:'auto'
 				" required="true">
 			</div>
+			
+		<div class="fitem">
+				<label>Area:</label>
+				<input class="easyui-combobox" name="area"
+					data-options="
+						url:'modules/areas/get_areas_hab.php',
+						valueField:'cod_area',
+						textField:'des_area',
+						panelHeight:'auto'
+				" required="true">
+			</div>		
+			
 		<div class="fitem">
 				<label>Estado:</label>
 				<input class="easyui-combobox" name="estado"
@@ -51,7 +64,7 @@ require_once("menu.php");?>
 						textField:'desc_estado',
 						panelHeight:'auto'
 				" required="true">
-			</div>
+			</div>	
 		</form>
 	</div>
 	<div id="dlg-buttons">
@@ -63,14 +76,14 @@ require_once("menu.php");?>
 		function newArea(){
 			$('#dlg').dialog('open').dialog('setTitle','Nueva Area');
 			$('#fm').form('clear');
-			url = 'modules/areas/save_area.php';
+			url = 'modules/deptos/save_depto.php';
 		}
 		function editArea(){
 			var row = $('#dg').datagrid('getSelected');
 			if (row){
 				$('#dlg').dialog('open').dialog('setTitle','Editar Area');
 				$('#fm').form('load',row);
-				url = 'modules/areas/update_area.php';
+				url = 'modules/deptos/update_depto.php';
 			}
 		}
 		function saveArea(){
