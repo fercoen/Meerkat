@@ -69,6 +69,12 @@ require_once("menu.php");?>
 			var row = $('#dg').datagrid('getSelected');
 			if (row){
 				$('#dlg').dialog('open').dialog('setTitle','Editar Area');
+                // te agrego estos porque el objeto row tiene que tener los 
+                // elementos con los mismos nombres que el input type del html
+                // sino no te los llena
+                row.user = row.cod_user;
+                row.estado = row.desc_estado;
+                console.log(row);
 				$('#fm').form('load',row);
 				url = 'modules/areas/update_area.php';
 			}
