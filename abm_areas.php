@@ -73,8 +73,8 @@ require_once("menu.php");?>
                 // elementos con los mismos nombres que el input type del html
                 // sino no te los llena
                 row.user = row.cod_user;
-                row.estado = row.desc_estado;
-                console.log(row);
+                row.estado = row.cod_estado;
+                // console.log(row);
 				$('#fm').form('load',row);
 				url = 'modules/areas/update_area.php';
 			}

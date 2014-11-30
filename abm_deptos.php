@@ -74,14 +74,17 @@ require_once("menu.php");?>
 	<script type="text/javascript">
 		var url;
 		function newArea(){
-			$('#dlg').dialog('open').dialog('setTitle','Nueva Area');
+			$('#dlg').dialog('open').dialog('setTitle','Nuevo Departamento');
 			$('#fm').form('clear');
 			url = 'modules/deptos/save_depto.php';
 		}
 		function editArea(){
 			var row = $('#dg').datagrid('getSelected');
 			if (row){
-				$('#dlg').dialog('open').dialog('setTitle','Editar Area');
+				$('#dlg').dialog('open').dialog('setTitle','Editar Departamento');
+				row.user = row.cod_user;
+                row.estado = row.cod_estado;
+				row.area = row.cod_area;
 				$('#fm').form('load',row);
 				url = 'modules/deptos/update_depto.php';
 			}
