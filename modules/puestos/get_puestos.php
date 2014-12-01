@@ -6,10 +6,10 @@
 
 	include '../../include/conectar.php';
 	
-	$rs = mysql_query("select count(*) from areas");
+	$rs = mysql_query("select count(*) from puestos");
 	$row = mysql_fetch_row($rs);
 	$result["total"] = $row[0];
-	$rs = mysql_query("SELECT cod_area, a.cod_estado, a.cod_user, des_area, desc_estado, nombre_user FROM areas a INNER JOIN estados e ON a.cod_estado = e.cod_estado INNER JOIN usuarios u ON a.cod_user = u.cod_user ORDER BY 2,4 limit $offset,$rows");
+	$rs = mysql_query("SELECT p.cod_puesto, p.desc_puesto, p.cod_depto, d.desc_depto, p.cod_estado, a.des_area, e.desc_estado FROM puestos p INNER JOIN departamentos d ON p.cod_depto = d.cod_depto INNER JOIN estados e ON p.cod_estado = e.cod_estado INNER JOIN areas a ON d.cod_area = a.cod_area ORDER BY 5, 2, 6, 1 LIMIT $offset,$rows");
 	
 	$items = array();
 	while($row = mysql_fetch_object($rs)){

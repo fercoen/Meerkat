@@ -9,7 +9,7 @@
 	$rs = mysql_query("select count(*) from departamentos");
 	$row = mysql_fetch_row($rs);
 	$result["total"] = $row[0];
-	$rs = mysql_query("SELECT cod_depto, d.cod_estado, d.cod_user, desc_depto, desc_estado, nombre_user, d.cod_area, des_area FROM departamentos d INNER JOIN estados e ON d.cod_estado = e.cod_estado INNER JOIN usuarios u ON d.cod_user = u.cod_user INNER JOIN areas a ON d.cod_area = a.cod_area ORDER BY 2 LIMIT $offset,$rows");
+	$rs = mysql_query("SELECT cod_depto, d.cod_estado, d.cod_user, desc_depto, desc_estado, nombre_user, d.cod_area, des_area FROM departamentos d INNER JOIN estados e ON d.cod_estado = e.cod_estado INNER JOIN usuarios u ON d.cod_user = u.cod_user INNER JOIN areas a ON d.cod_area = a.cod_area ORDER BY 2,4,8 LIMIT $offset,$rows");
 	
 	$items = array();
 	while($row = mysql_fetch_object($rs)){

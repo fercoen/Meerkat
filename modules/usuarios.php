@@ -7,7 +7,7 @@ class usuarios {
 	 
 	 function login () {
 		$usu	= mysql_real_escape_string($this->login_usr);
-		$pass	= mysql_real_escape_string($this->contrasena);
+		$pass	= md5(mysql_real_escape_string($this->contrasena));
 		$sql	=	"SELECT * FROM usuarios WHERE login_user='".$usu."' AND pass_user='".$pass."' AND cod_estado=1";
 		$result	=	mysql_query($sql);
 			//si no me devuelve nada es porque no existe el usuario, devuelve 1 y sale
