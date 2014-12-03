@@ -10,10 +10,10 @@ require_once("menu.php");?>
 		<thead>
 			<tr>
 				<th field="desc_categ" width="50">Descripcion</th>
+				<th field="desc_tipo" width="50">Tipo de Categoria</th>
 				<th field="ptopedido_categ" width="50">Pto. Pedido</th>
 				<th field="vidautil_categ" width="50">Vida Util</th>
 				<th field="desc_estado" width="50">Estado</th>
-				<th field="desc_tipo" width="50">Tipo de Categoria</th>
 			</tr>
 		</thead>
 	</table>
@@ -22,7 +22,7 @@ require_once("menu.php");?>
 		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editArea()">Editar/Deshabilitar Categoría</a>
 	</div>
 	
-	<div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
+	<div id="dlg" class="easyui-dialog" style="width:400px;height:320px;padding:10px 20px"
 			closed="true" buttons="#dlg-buttons">
 		<div class="ftitle">Informacion de la Categría</div>
 		<form id="fm" method="post" novalidate>
@@ -37,23 +37,25 @@ require_once("menu.php");?>
 			
 			<div class="fitem">
 				<label>Tipo de Categoría:</label>
-				<input class="easyui-combobox" name="tipo"
+				<input class="easyui-combobox" name="tipo" id="tipo"
 					data-options="
 						url:'modules/tipos_categ/get_tipos_categ_hab.php',
 						valueField:'cod_tipo',
 						textField:'desc_tipo',
-						panelHeight:'auto'
+						panelHeight:'auto',
+						onSelect:function(row){
+								habilitar(row)}
 				" required="true">
 			</div>
 						
 		<div class="fitem">
 				<label>Punto de Pedido:</label>
-				<input name="ptopedido_categ" class="easyui-textbox" required="true">
+				<input id="ptopedido_categ" name="ptopedido_categ" class="easyui-textbox" required="true" readonly="true">
 			</div>
 		
 		<div class="fitem">
 			<label>Vida útil:</label>
-			<input name="vidautil_categ" class="easyui-textbox" required="true">
+			<input id="vidautil_categ" name="vidautil_categ" class="easyui-textbox" required="true" readonly="true">
 		</div>
 					
 		<div class="fitem">
@@ -74,23 +76,37 @@ require_once("menu.php");?>
 	</div>
 	<script type="text/javascript">
 		var url;
-						
+			
 		function newArea(){
-			$('#dlg').dialog('open').dialog('setTitle','Nuevo Departamento');
+			$('#dlg').dialog('open').dialog('setTitle','Nueva Categoría');
 			$('#fm').form('clear');
-			url = 'modules/deptos/save_depto.php';
+			url = 'modules/categorias/save_categ.php';
 		}
 		function editArea(){
 			var row = $('#dg').datagrid('getSelected');
 			if (row){
-				$('#dlg').dialog('open').dialog('setTitle','Editar Departamento');
-				row.user = row.cod_user;
+				$('#dlg').dialog('open').dialog('setTitle','Editar Categoría');
                 row.estado = row.cod_estado;
-				row.area = row.cod_area;
+				row.tipo = row.cod_tipo;
 				$('#fm').form('load',row);
-				url = 'modules/deptos/update_depto.php';
+				url = 'modules/categorias/update_categ.php';
 			}
 		}
+		
+		function habilitar(row){
+			if(row.cod_tipo == 2){
+				$('#vidautil_categ').textbox('readonly',true);
+				$('#vidautil_categ').textbox('setValue','0');
+				$('#ptopedido_categ').textbox('readonly',false);
+				$('#ptopedido_categ').textbox('clear');
+			}else { 
+				$('#vidautil_categ').textbox('readonly',false);
+				$('#vidautil_categ').textbox('clear');			
+				$('#ptopedido_categ').textbox('readonly',true);
+				$('#ptopedido_categ').textbox('setValue','0');
+			}
+		}
+		
 		function saveArea(){
             try{
 			$('#fm').form('submit',{
