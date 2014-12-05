@@ -12,7 +12,7 @@ $usu->contrasena=	$pass;
 
 //Esto comprueba si existe
 if ($usu->login() == 1){
-	header('Location: ../index.php?all=0');
+	header('Location: index.php');
 	}  else {
 
 		$_SESSION['usuariou'] 				=	$usu->login_usr;

@@ -25,7 +25,7 @@
 		<li><a href="abm_puestos.php">Puestos</a></li>
 		<li><a href="abm_users.php">Usuarios</a></li>
 		<li><a href="abm_categs.php">Categorias</a></li>
-		<li><a href="#">Proveedores</a></li>
+		<li><a href="abm_proveeds.php">Proveedores</a></li>
 	</ul></li>
 	<li class="topmenu"><a href="#" style="height:18px;line-height:18px;"><span>Informes</span></a>
 	<ul>
