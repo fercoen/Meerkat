@@ -3,7 +3,7 @@ require_once('validacion.php');
 require_once("include/header.php");
 require_once("menu.php");?>
 	<br /> <br /> <br />
-	<table id="dg" title="Usuarios" class="easyui-datagrid" style="width:100%;"
+	<table id="dg" title="Proveedores" class="easyui-datagrid" style="width:100%;"
 			url="modules/proveedores/get_proveeds.php"
 			toolbar="#toolbar" pagination="true"
 			rownumbers="true" fitColumns="true" singleSelect="true">
