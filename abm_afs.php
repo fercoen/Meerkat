@@ -9,10 +9,10 @@ require_once("menu.php");?>
 			rownumbers="true" fitColumns="true" singleSelect="true">
 		<thead>
 			<tr>
-				<th field="cod_af" width="50">Código</th>
+				<th field="codigo_af" width="50">Código</th>
 				<th field="Nombre_af" width="50">Nombre</th>
 				<th field="fechacompra_af" width="50">Fecha Compra</th>
-				<th field="cod_categ" width="50">Categoría</th>
+				<th field="desc_categ" width="50">Categoría</th>
 				<th field="nombre_prov" width="50">Proveedor</th>
 				<th field="costo_af" width="50">Costo</th>
 				<th field="desc_estado" width="50">Estado</th>
@@ -20,121 +20,103 @@ require_once("menu.php");?>
 		</thead>
 	</table>
 	<div id="toolbar">
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newArea()">Nuevo Activo Fijo</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editArea()">Editar Activo Fijo</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-man" plain="true" onclick="cambiarPass()">Ver Detalles</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newAf()">Nuevo Activo Fijo</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editAf()">Editar Activo Fijo</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-man" plain="true" onclick="verAf()">Ver Detalles</a>
 	</div>
 	
-	<div id="dlg" class="easyui-dialog" style="width:400px;height:375;padding:10px 20px"
+	<div id="dlg" class="easyui-dialog" style="width:500px;height:600;padding:10px 20px"
 			closed="true" buttons="#dlg-buttons">
-		<div class="ftitle">Informacion del Usuario</div>
+		<div class="ftitle">Informacion del Activo Fijo</div>
 		<form id="fm" method="post" novalidate>
 			<div class="fitem" hidden>
-				<label>Codigo:</label>			
-				<input name="cod_user" class="easyui-textbox" required="true">
+				<label>Cod_af:</label>			
+				<input name="cod_af" class="easyui-textbox" required="true">
 			</div>
 			<div class="fitem">
-				<label>Login:</label>
-				<input name="login_user" class="easyui-textbox" required="true">
+				<label>Codigo:</label>			
+				<input name="codigo_af" class="easyui-numberbox" data-options="min:0,max:99999999,precision:0" required="true">
+			</div>
+			<div class="fitem">
+				<label>Nombre:</label>
+				<input name="Nombre_af" class="easyui-textbox" required="true">
 			</div>
 			
 			<div class="fitem">
-				<label>Nombre:</label>
-				<input name="nombre_user" class="easyui-textbox" required="true">
+				<label>Fecha de Compra:</label>
+				<input name="fechacompra_af" class="easyui-datebox" required="true">
 			</div>
 		
 			<div class="fitem">
-				<label>Telefono:</label>
-				<input name="tel_user" class="easyui-textbox" required="true">
-			</div>
-			<div class="fitem">
-				<label>E-mail:</label>
-				<input name="mail_user" class="easyui-textbox" required="true">
-			</div>
-			<div class="fitem">
-				<label>Puesto:</label>
-				<input class="easyui-combobox" name="puesto"
+				<label>Categoria:</label>
+				<input class="easyui-combobox" name="categoria"
 					data-options="
-						url:'modules/puestos/get_puestos_hab.php',
-						valueField:'cod_puesto',
-						textField:'desc_puesto',
+						url:'modules/categorias/get_categ_hab_af.php',
+						valueField:'cod_categ',
+						textField:'desc_categ',
 						panelHeight:'auto'
 				" required="true">
 			</div>
 			
-		<div class="fitem">
-				<label>Perfil:</label>
-				<input class="easyui-combobox" name="perfil"
-					data-options="
-						url:'modules/perfiles/get_perfiles_hab.php',
-						valueField:'cod_perf',
-						textField:'nombre_perf',
-						panelHeight:'auto'
-				" required="true">
-			</div>		
+			<div class="fitem">
+				<label>Garantía (años):</label>
+				<input name="garantia_af" class="easyui-numberbox" data-options="min:0,precision:0" required="true">
+			</div>
 			
-		<div class="fitem">
-				<label>Estado:</label>
-				<input class="easyui-combobox" name="estado"
+			<div class="fitem">
+				<label>Costo (pesos):</label>
+				<input name="costo_af" class="easyui-numberbox" data-options="min:0,precision:2" required="true">
+			</div>
+			
+			<div class="fitem">
+				<label>S/N</label>
+				<input name="nroserie_af" class="easyui-textbox" required="true">
+			</div>			
+			
+			<div class="fitem">
+				<label>Hardware:</label><br/>
+				<textarea name="hardware_af" maxlength="255" style="overflow:auto;resize:none" rows="13" cols="50" required="true"></textarea>
+			</div>
+			
+			<div class="fitem">
+				<label>Proveedor:</label>
+				<input class="easyui-combobox" name="proveedor"
 					data-options="
-						url:'modules/estados/get_estados_af.php',
-						valueField:'cod_estado',
-						textField:'desc_estado',
+						url:'modules/proveedores/get_proveed_hab.php',
+						valueField:'cod_prov',
+						textField:'nombre_prov',
 						panelHeight:'auto'
 				" required="true">
 			</div>	
+	
+	
 		</form>
 	</div>
 	<div id="dlg-buttons">
-		<a href="#" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveArea();" style="width:90px">Guardar</a>
+		<a href="#" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveAf();" style="width:90px">Guardar</a>
 		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">Cancelar</a>
-	</div>
-	
-	<div id="dlgPass" class="easyui-dialog" style="width:400px;height:200;padding:10px 20px"
-			closed="true" buttons="#dlgPass-buttons">
-	
-	<div class="ftitle">Cambio de Clave</div>
-		<form id="fmPass" method="post" novalidate>
-			<div class="fitem" hidden>
-				<label>Codigo:</label>			
-				<input name="cod_user" class="easyui-textbox" required="true">
-			</div>
-			<div class="fitem">
-				<label>Usuario:</label>
-				<input name="nombre_user" class="easyui-textbox" editable="false">
-			</div>
-			<div class="fitem">
-				<label>Clave:</label>
-				<input name="pass" type="password" class="easyui-textbox" required="true">
-			</div>
-		</form>
-	</div>
-	
-	<div id="dlgPass-buttons">
-		<a href="#" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="savePass();" style="width:90px">Guardar</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlgPass').dialog('close')" style="width:90px">Cancelar</a>
 	</div>
 	
 	<script type="text/javascript">
 		var url;
-		function newArea(){
-			$('#dlg').dialog('open').dialog('setTitle','Nuevo Usuario');
+		function newAf(){
+			$('#dlg').dialog('open').dialog('setTitle','Nuevo Activo Fijo');
 			$('#fm').form('clear');
-			url = 'modules/users/save_user.php';
+			url = 'modules/afs/save_af.php';
 		}
-		function editArea(){
+		
+		function editAf(){
 			var row = $('#dg').datagrid('getSelected');
 			if (row){
-				$('#dlg').dialog('open').dialog('setTitle','Editar Usuario');
-				row.puesto = row.cod_puesto;
-                row.estado = row.cod_estado;
-				row.perfil = row.cod_perf;
+				$('#dlg').dialog('open').dialog('setTitle','Editar Activo Fijo');
+				row.proveedor = row.cod_prov;
+				row.categoria = row.cod_categ;
 				$('#fm').form('load',row);
-				url = 'modules/users/update_user.php';
+				url = 'modules/afs/update_af.php';
 			}
 		}
 		
-		function cambiarPass(){
+		function verAf(){
 			var row =$('#dg').datagrid('getSelected');
 			if (row){
 				$('#dlgPass').dialog('open').dialog('setTitle','Cambiar Password');
@@ -143,7 +125,7 @@ require_once("menu.php");?>
 			}
 		}				
 		
-		function saveArea(){
+		function saveAf(){
             try{
 			$('#fm').form('submit',{
 				url: url,
