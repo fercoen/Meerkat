@@ -96,6 +96,70 @@ require_once("menu.php");?>
 		<a href="#" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveAf();" style="width:90px">Guardar</a>
 		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">Cancelar</a>
 	</div>
+		
+		<div id="dlgDetalle" class="easyui-dialog" style="width:500px;height:600;padding:10px 20px"
+			closed="true" buttons="#dlgDetalle-buttons">
+		<div class="ftitle">Informacion del Activo Fijo</div>
+		<form id="fmDetalle" method="post" novalidate>
+			<div class="fitem" hidden>
+				<label>Cod_af:</label>			
+				<input name="cod_af" class="easyui-textbox" editable="false">
+			</div>
+			<div class="fitem">
+				<label>Codigo:</label>			
+				<input name="codigo_af" class="easyui-numberbox" data-options="min:0,max:99999999,precision:0" editable="false">
+			</div>
+			<div class="fitem">
+				<label>Nombre:</label>
+				<input name="Nombre_af" class="easyui-textbox" editable="false">
+			</div>
+			
+			<div class="fitem">
+				<label>Fecha de Compra:</label>
+				<input name="fechacompra_af" class="easyui-textbox" editable="false">
+			</div>
+		
+			<div class="fitem">
+				<label>Categoria:</label>
+				<input name="categoria" class="easyui-textbox" editable="false">
+			</div>
+			
+			<div class="fitem">
+				<label>Garantía (años):</label>
+				<input name="garantia_af" class="easyui-numberbox" data-options="min:0,precision:0" editable="false">
+			</div>
+			
+			<div class="fitem">
+				<label>Costo (pesos):</label>
+				<input name="costo_af" class="easyui-numberbox" data-options="min:0,precision:2" editable="false">
+			</div>
+			
+			<div class="fitem">
+				<label>S/N</label>
+				<input name="nroserie_af" class="easyui-textbox" editable="false">
+			</div>			
+			
+			<div class="fitem">
+				<label>Hardware:</label><br/>
+				<textarea name="hardware_af" maxlength="255" style="overflow:auto;resize:none" rows="13" cols="50" readonly></textarea>
+			</div>
+			
+			<div class="fitem">
+				<label>Proveedor:</label>
+					<input name="proveedor" class="easyui-textbox" editable="false">
+			</div>	
+	
+	
+		</form>
+	</div>
+	<div id="dlgDetalle-buttons">
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick="javascript:$('#dlgDetalle').dialog('close')" style="width:90px">Aceptar</a>
+	</div>
+
+	
+	
+	
+	
 	
 	<script type="text/javascript">
 		var url;
@@ -119,9 +183,10 @@ require_once("menu.php");?>
 		function verAf(){
 			var row =$('#dg').datagrid('getSelected');
 			if (row){
-				$('#dlgPass').dialog('open').dialog('setTitle','Cambiar Password');
-				$('#fmPass').form('load',row);
-				url = 'modules/users/cambiar_pass.php';
+				$('#dlgDetalle').dialog('open').dialog('setTitle','Detalles');
+				row.proveedor = row.nombre_prov;
+				row.categoria = row.desc_categ;
+				$('#fmDetalle').form('load',row);
 			}
 		}				
 		
@@ -139,29 +204,9 @@ require_once("menu.php");?>
 							msg: result.errorMsg
 						});
 					} else {
-						$('#dlg').dialog('close');		// close the dialog
+						// close the dialog
+						$('#dlg').dialog('close');		
 						$('#dg').datagrid('reload');	// reload the user data
-					}
-				}
-            });
-            }catch(e){console.log(e.message())}
-		}
-		
-		function savePass(){
-            try{
-			$('#fmPass').form('submit',{
-				url: url,
-                onSubmit: function(){
-					//return $(this).form('validate');
-				},
-				success: function(result){
-					if (result.errorMsg){
-						$.messager.show({
-							title: 'Error',
-							msg: result.errorMsg
-						});
-					} else {
-						$('#dlgPass').dialog('close');		// close the dialog
 					}
 				}
             });
