@@ -24,6 +24,7 @@ require_once("menu.php");?>
 		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editAf()">Editar Activo Fijo</a>
 		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" plain="true" onclick="verAf()">Ver Detalles</a>
 		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="enviarDeposito()">Enviar a Deposito</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="darBaja()">Dar de Baja A.F.</a>
 	</div>
 	
 	<div id="dlg" class="easyui-dialog" style="width:500px;height:600;padding:10px 20px"
@@ -177,7 +178,25 @@ require_once("menu.php");?>
 		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlgDeposito').dialog('close')" style="width:90px">Cancelar</a>
 	</div>
 	
+	<div id="dlgBaja" class="easyui-dialog" style="width:400px;height:200;padding:10px 20px"
+			closed="true" buttons="#dlgBaja-buttons">
 	
+
+	<div class="ftitle">Confirmar</div>
+		<form id="fmBaja" method="post" novalidate>
+			<div class="fitem" hidden>
+				<input name="cod_af" class="easyui-textbox" editable="false">
+			</div>
+				<label>Desea dar de baja:</label>
+			<div class="fitem">
+				<input name="Nombre_af" class="easyui-textbox" editable="false">
+			</div>
+		</form>
+	</div>
+	<div id="dlgBaja-buttons">
+		<a href="#" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="Baja();" style="width:90px">Aceptar</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlgBaja').dialog('close')" style="width:90px">Cancelar</a>
+	</div>
 	
 	
 	<script type="text/javascript">
@@ -207,6 +226,36 @@ require_once("menu.php");?>
 				row.categoria = row.desc_categ;
 				$('#fmDetalle').form('load',row);
 			}
+		}
+		function darBaja(){
+			var row =$('#dg').datagrid('getSelected');
+			if (row){
+				$('#dlgBaja').dialog('open').dialog('setTitle','Confirmar');
+				$('#fmBaja').form('load',row);
+				url = 'modules/afs/dar_baja.php';
+			}
+		}		
+					
+		function Baja(){
+            try{
+			$('#fmBaja').form('submit',{
+				url: url,
+                onSubmit: function(){
+					//return $(this).form('validate');
+				},
+				success: function(result){
+					if (result.errorMsg){
+						$.messager.show({
+							title: 'Error',
+							msg: result.errorMsg
+						});
+					} else {
+						$('#dlgBaja').dialog('close');		// close the dialog
+						$('#dg').datagrid('reload');
+					}
+				}
+            });
+            }catch(e){console.log(e.message())}
 		}
 		function enviarDeposito(){
 			var row =$('#dg').datagrid('getSelected');

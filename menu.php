@@ -2,9 +2,9 @@
 <ul id="css3menu1" class="topmenu">
 	<li class="topfirst"><a href="#" style="height:18px;line-height:18px;"><span>Activo Fijo</span></a>
 	<ul>
-		<li><a href="abm_afs.php">ABM/Asignacion</a></li>
+		<li><a href="abm_afs.php">ABM/Deposito</a></li>
+		<li><a href="#">Asignacion</a></li>
 		<li><a href="#">Service</a></li>
-		<li><a href="#">Baja</a></li>
 		<li><a href="#">Reactivacion</a></li>
 	</ul></li>
 	<li class="topmenu"><a href="#" style="height:18px;line-height:18px;"><span>Consumible</span></a>
