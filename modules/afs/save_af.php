@@ -14,7 +14,7 @@ $cod_prov = htmlspecialchars($_REQUEST['proveedor']);
 
 include '../../include/conectar.php';
 
-$sql = "insert into activos_fijos(codigo_af,Nombre_af,fechacompra_af,cod_categ,garantia_af,costo_af,nroserie_af,hardware_af,cod_prov,cod_estado) values('$codigo_af','$Nombre_af','$fechacompra_af','$cod_categ','$garantia_af','$costo_af','$nroserie_af','$hardware_af','$cod_prov',1)";
+$sql = "insert into activos_fijos(codigo_af,Nombre_af,fechacompra_af,cod_categ,garantia_af,costo_af,nroserie_af,hardware_af,cod_prov,cod_estado) values('$codigo_af','$Nombre_af','$fechacompra_af','$cod_categ','$garantia_af','$costo_af','$nroserie_af','$hardware_af','$cod_prov',3)";
 
 echo $sql;
 
