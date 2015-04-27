@@ -22,7 +22,8 @@ require_once("menu.php");?>
 	<div id="toolbar">
 		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newAf()">Nuevo Activo Fijo</a>
 		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editAf()">Editar Activo Fijo</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-man" plain="true" onclick="verAf()">Ver Detalles</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" plain="true" onclick="verAf()">Ver Detalles</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="enviarDeposito()">Enviar a Deposito</a>
 	</div>
 	
 	<div id="dlg" class="easyui-dialog" style="width:500px;height:600;padding:10px 20px"
@@ -156,7 +157,25 @@ require_once("menu.php");?>
 		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick="javascript:$('#dlgDetalle').dialog('close')" style="width:90px">Aceptar</a>
 	</div>
 
+	<div id="dlgDeposito" class="easyui-dialog" style="width:400px;height:200;padding:10px 20px"
+			closed="true" buttons="#dlgDeposito-buttons">
 	
+
+	<div class="ftitle">Confirmar</div>
+		<form id="fmDeposito" method="post" novalidate>
+			<div class="fitem" hidden>
+				<input name="cod_af" class="easyui-textbox" editable="false">
+			</div>
+				<label>Desea enviar al deposito:</label>
+			<div class="fitem">
+				<input name="Nombre_af" class="easyui-textbox" editable="false">
+			</div>
+		</form>
+	</div>
+	<div id="dlgDeposito-buttons">
+		<a href="#" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="aDeposito();" style="width:90px">Aceptar</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlgDeposito').dialog('close')" style="width:90px">Cancelar</a>
+	</div>
 	
 	
 	
@@ -188,8 +207,37 @@ require_once("menu.php");?>
 				row.categoria = row.desc_categ;
 				$('#fmDetalle').form('load',row);
 			}
-		}				
-		
+		}
+		function enviarDeposito(){
+			var row =$('#dg').datagrid('getSelected');
+			if (row){
+				$('#dlgDeposito').dialog('open').dialog('setTitle','Confirmar');
+				$('#fmDeposito').form('load',row);
+				url = 'modules/afs/enviar_deposito.php';
+			}
+		}		
+					
+		function aDeposito(){
+            try{
+			$('#fmDeposito').form('submit',{
+				url: url,
+                onSubmit: function(){
+					//return $(this).form('validate');
+				},
+				success: function(result){
+					if (result.errorMsg){
+						$.messager.show({
+							title: 'Error',
+							msg: result.errorMsg
+						});
+					} else {
+						$('#dlgDeposito').dialog('close');		// close the dialog
+						$('#dg').datagrid('reload');
+					}
+				}
+            });
+            }catch(e){console.log(e.message())}
+		}
 		function saveAf(){
             try{
 			$('#fm').form('submit',{

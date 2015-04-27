@@ -1,13 +1,11 @@
 <div class="Menutop"> </div>
 <ul id="css3menu1" class="topmenu">
-	<li class="topfirst"><a href="abm_afs.php" style="height:18px;line-height:18px;"><span>Activo Fijo</span></a>
+	<li class="topfirst"><a href="#" style="height:18px;line-height:18px;"><span>Activo Fijo</span></a>
 	<ul>
-		<li><a href="#">Alta</a></li>
-		<li><a href="#">Asignacion/Reasignacion</a></li>
+		<li><a href="abm_afs.php">ABM/Asignacion</a></li>
 		<li><a href="#">Service</a></li>
-		<li><a href="#">Reactivacion</a></li>
 		<li><a href="#">Baja</a></li>
-		<li><a href="#">Enviar a deposito</a></li>
+		<li><a href="#">Reactivacion</a></li>
 	</ul></li>
 	<li class="topmenu"><a href="#" style="height:18px;line-height:18px;"><span>Consumible</span></a>
 	<ul>
