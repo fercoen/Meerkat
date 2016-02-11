@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require_once('include/header.php');
 $error	= 1;
 if(isset($_GET['all'])) $error = $_GET['all'];

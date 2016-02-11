@@ -19,6 +19,7 @@ if ($usu->login() == 1){
 		$_SESSION['estadou'] 				=	"conectado";
 		$_SESSION['nombreu'] 				=	$usu->nombre;
 		$_SESSION['sidu']					=	$usu->sid;
+		$_SESSION['rol']					=	$usu->rol;
 		
 		header('Location: home.php');
 		

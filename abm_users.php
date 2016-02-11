@@ -21,9 +21,9 @@ require_once("menu.php");?>
 		</thead>
 	</table>
 	<div id="toolbar">
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newArea()">Nuevo Usuario</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editArea()">Editar/Deshabilitar Usuario</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-man" plain="true" onclick="cambiarPass()">Cambiar contraseña</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton new" iconCls="icon-add" plain="true" onclick="newArea()">Nuevo Usuario</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton edit" iconCls="icon-edit" plain="true" onclick="editArea()">Editar/Deshabilitar Usuario</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton change" iconCls="icon-man" plain="true" onclick="cambiarPass()">Cambiar contraseña</a>
 	</div>
 	
 	<div id="dlg" class="easyui-dialog" style="width:400px;height:375;padding:10px 20px"
@@ -149,7 +149,7 @@ require_once("menu.php");?>
 			$('#fm').form('submit',{
 				url: url,
                 onSubmit: function(){
-					//return $(this).form('validate');
+                	if(!validate($(this))) return false;
 				},
 				success: function(result){
 					if (result.errorMsg){
@@ -171,7 +171,7 @@ require_once("menu.php");?>
 			$('#fmPass').form('submit',{
 				url: url,
                 onSubmit: function(){
-					//return $(this).form('validate');
+                	if(!validate($(this))) return false;
 				},
 				success: function(result){
 					if (result.errorMsg){
@@ -186,6 +186,23 @@ require_once("menu.php");?>
             });
             }catch(e){console.log(e.message())}
 		}
+	
+		$('#dg').datagrid({
+		    onClickRow: function(index,row){
+		    	$('#toolbar').find('.edit').attr('onclick', 'editArea()');
+		    	$('#toolbar').find('.change').attr('onclick', 'cambiarPass()');
+		    	$('#toolbar').find('a').css('cursor', 'pointer');
+		    	$('#toolbar').find('a').css('opacity', 1);               
+		    }
+		});
+		$(document).ready(function() {
+			$('#toolbar').find('a').removeAttr("onclick"),
+	    	$('#toolbar').find('a').css('cursor', 'default');
+	    	$('#toolbar').find('a').css('opacity', 0.5);
+		    $('#toolbar').find('.new').attr('onclick', 'newArea()');
+		    $('#toolbar').find('.new').css('cursor', 'pointer');
+		    $('#toolbar').find('.new').css('opacity', 1);               
+	    });
 	
 	</script>
 	<style type="text/css">

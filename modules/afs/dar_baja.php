@@ -5,7 +5,7 @@ $cod_estado = 6;
 
 include '../../include/conectar.php';
 
-$sql = "update activos_fijos set cod_estado='$cod_estado' where cod_af=$cod_af";
+$sql = "update activos_fijos set cod_estado='$cod_estado', depto_af=4, user_af=0 where cod_af=$cod_af";
 $result = @mysql_query($sql);
 if ($result){
 	echo json_encode(array(

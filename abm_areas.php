@@ -16,8 +16,8 @@ require_once("menu.php");?>
 		</thead>
 	</table>
 	<div id="toolbar">
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newArea()">Nueva Area</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editArea()">Editar/Deshabilitar Area</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton new" iconCls="icon-add" plain="true" onclick="newArea()">Nueva Area</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton edit" iconCls="icon-edit" plain="true" onclick="editArea()">Editar/Deshabilitar Area</a>
 	</div>
 	
 	<div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
@@ -84,7 +84,7 @@ require_once("menu.php");?>
 			$('#fm').form('submit',{
 				url: url,
                 onSubmit: function(){
-					//return $(this).form('validate');
+                	if(!validate($(this))) return false;
 				},
 				success: function(result){
 					if (result.errorMsg){
@@ -101,6 +101,18 @@ require_once("menu.php");?>
             }catch(e){console.log(e.message())}
 		}
 	
+		$('#dg').datagrid({
+		    onClickRow: function(index,row){
+		    	$('#toolbar').find('.edit').attr('onclick', 'editArea()');
+		    	$('#toolbar').find('a').css('cursor', 'pointer');
+		    	$('#toolbar').find('a').css('opacity', 1);               
+		    }
+		});
+		$(document).ready(function() {
+			$('#toolbar').find('.edit').removeAttr("onclick"),
+	    	$('#toolbar').find('.edit').css('cursor', 'default');
+	    	$('#toolbar').find('.edit').css('opacity', 0.5);
+	    });
 	</script>
 	<style type="text/css">
 		#fm{

@@ -16,6 +16,7 @@ class usuarios {
 		$resul			=	mysql_fetch_array($result);
 		$this->nombre	=	$resul['nombre_user'];
 		$this->sid		=	$resul['cod_user'];
+		$this->rol		=	$resul['cod_perf'];
 		return $resul;
 	}
 }

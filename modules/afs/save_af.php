@@ -10,11 +10,12 @@ $costo_af = htmlspecialchars($_REQUEST['costo_af']);
 $nroserie_af = htmlspecialchars($_REQUEST['nroserie_af']);
 $hardware_af = htmlspecialchars($_REQUEST['hardware_af']);
 $cod_prov = htmlspecialchars($_REQUEST['proveedor']);
+$depto_af = htmlspecialchars($_REQUEST['depto_af']);
 
 
 include '../../include/conectar.php';
 
-$sql = "insert into activos_fijos(codigo_af,Nombre_af,fechacompra_af,cod_categ,garantia_af,costo_af,nroserie_af,hardware_af,cod_prov,cod_estado) values('$codigo_af','$Nombre_af','$fechacompra_af','$cod_categ','$garantia_af','$costo_af','$nroserie_af','$hardware_af','$cod_prov',3)";
+$sql = "insert into activos_fijos(codigo_af,Nombre_af,fechacompra_af,cod_categ,garantia_af,costo_af,nroserie_af,hardware_af,cod_prov,cod_estado,depto_af) values('$codigo_af','$Nombre_af','$fechacompra_af','$cod_categ','$garantia_af','$costo_af','$nroserie_af','$hardware_af','$cod_prov',3,4)";
 
 echo $sql;
 
@@ -31,6 +32,7 @@ if ($result){
 	'nroserie_af' => $nroserie_af,
 	'hardware_af' => $hardware_af,
 	'cod_prov' => $cod_prov,
+	'depto_af' => $depto_af,
 	'cod_estado' => $cod_estado
 	));
 } else {
