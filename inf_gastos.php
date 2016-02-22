@@ -26,7 +26,7 @@ require_once("menu.php");
 	<table id="dg"  class="easyui-datagrid" title="Gastos por Departamento" style="width:100%;" toolbar="#toolbar" url="modules/consumibles/get_gastos_inf.php" pagination="true" rownumbers="true"  fitColumns="true" singleSelect="true"  showFooter="true">
 		<thead>
 			<tr>
-				<th field="cod_cons" width="50">Código consumible</th>
+				<th field="cod_cons" width="50">Código</th>
 				<th field="desc_cons" width="50">Nombre</th>
 				<th field="fecha_asig" width="50">Fecha</th>
 				<th field="cantidad" width="50">Cantidad</th>
@@ -49,14 +49,14 @@ require_once("menu.php");
 			<input id="desde" class="easyui-datebox" data-options="formatter:myformatter,parser:myparser" style="width:100px">
 			<label>Hasta:</label>
 	        <input id="hasta" class="easyui-datebox" data-options="formatter:myformatter,parser:myparser" style="width:100px">
-	        <a href="#" class="easyui-linkbutton" iconCls="icon-search"  onclick="doSearch()">Search</a>
+	        <a href="#" class="easyui-linkbutton" iconCls="icon-search"  onclick="doSearch()">Buscar</a>
 	    </div>
 	</div>
 	<br />
 	<table id="dg2"  class="easyui-datagrid" title="Gastos por Usuario" style="width:100%;" toolbar="#toolbar2" url="modules/consumibles/get_gastos_inf_user.php" pagination="true" rownumbers="true"  fitColumns="true" singleSelect="true"  showFooter="true">
 		<thead>
 			<tr>
-				<th field="cod_cons" width="50">Código consumible</th>
+				<th field="cod_cons" width="50">Código</th>
 				<th field="desc_cons" width="50">Nombre</th>
 				<th field="fecha_asig" width="50">Fecha</th>
 				<th field="cantidad" width="50">Cantidad</th>
@@ -68,7 +68,7 @@ require_once("menu.php");
 	<div id="toolbar2" style="padding:5px;height:auto">
 	    <div>
 	    	<label>Usuario:</label>
-			<input class="easyui-combobox" id="depto" name="desc_depto2"
+			<input class="easyui-combobox" id="depto2" name="desc_depto2"
 				data-options="
 					url:'modules/users/get_users_hab_combo.php',
 					valueField:'cod_user',
@@ -79,7 +79,7 @@ require_once("menu.php");
 			<input id="desde2" class="easyui-datebox" data-options="formatter:myformatter,parser:myparser" style="width:100px">
 			<label>Hasta:</label>
 	        <input id="hasta2" class="easyui-datebox" data-options="formatter:myformatter,parser:myparser" style="width:100px">
-	        <a href="#" class="easyui-linkbutton" iconCls="icon-search"  onclick="doSearch()">Search</a>
+	        <a href="#" class="easyui-linkbutton" iconCls="icon-search"  onclick="doSearch()">Buscar</a>
 	    </div>
 	</div>
 	
@@ -123,6 +123,7 @@ require_once("menu.php");
 		    	console.log($('#desde').datebox('getValue'));
 		    	console.log($('#hasta').datebox('getValue'));
 		    	console.log($('#depto').combobox('getValue'));
+		    	console.log($('#depto2').combobox('getValue'));
 		    	depto = $('#depto').combobox('getValue')?$('#depto').combobox('getValue'):'nada';
 		    	depto2 = $('#depto2').combobox('getValue')?$('#depto2').combobox('getValue'):'nada';
 			    $('#dg').datagrid('load',{

@@ -26,8 +26,8 @@ if ($result){
 	'fechacompra_con' => $fechacompra_con,
 	'cod_categ' => $cod_categ,
 	'costo_cons' => $costo_cons,
-	'cod_prov' => $cod_prov,
-	'cod_estado' => $cod_estado
+	'cod_prov' => $cod_prov/*,
+	'cod_estado' => $cod_estado*/
 	));
 } else {
 	echo json_encode(array('errorMsg'=>$sql));

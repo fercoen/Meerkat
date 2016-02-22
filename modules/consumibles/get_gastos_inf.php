@@ -57,12 +57,11 @@
 	$d=0;
 	$items = array();
 	while($row = mysql_fetch_object($rs)){
-		$total_footer=$total_footer + $row->multi;
 		if($d!=$row->cod_depto && $d!=0) {
 			array_push($items, array('cod_cons'=>'Total '.$titu, 'multi'=>strval($total_footer)));
-			
 			$total_footer=0;			
 		}
+		$total_footer=$total_footer + $row->multi;
 		array_push($items, $row);
 		$titu=$row->desc_depto;
 		$d=$row->cod_depto;	

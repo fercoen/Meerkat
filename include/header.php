@@ -21,20 +21,31 @@
 }</style>
 <script type="text/javascript">
 		function validate(form){
+			fail=false;
 			$('.red').remove();
-			form.find('input').each(function(){
+			form.find(':input').each(function(){
 			    if(!$(this).attr('required')){
 			        console.log($(this)); 
 			    } else {
-			    	if ( ! $( this ).val() ) {
-	                    fail = true;
+					if($(this).hasClass('easyui-combobox') && $(this).combobox('getValue')==''){
+						fail = true;
 	                    $(this).next().after('<div class="red" style="color:red">Debe ingresar este dato</div>');
-	                }
+	                } else if($(this).hasClass('easyui-datebox') && $(this).datebox('getValue')==''){
+						fail = true;
+	                    $(this).next().after('<div class="red" style="color:red">Debe ingresar este dato</div>');
+	                } else if(!$(this).hasClass('easyui-combobox') && !$(this).hasClass('easyui-datebox') && !$(this).val()){
+	                	fail = true;
+	                    $(this).next().after('<div class="red" style="color:red">Debe ingresar este dato</div>');
+	               
+	                }			
+						
 			    }
 			});
 			if ( fail ) {
 				return false;
-	        } 
+	        } else {
+	        	return true;
+	        }
 		}
 </script>
 </head>

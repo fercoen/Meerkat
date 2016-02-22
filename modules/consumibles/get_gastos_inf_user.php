@@ -20,7 +20,7 @@
 	$rows = isset($_POST['rows']) ? intval($_POST['rows']) : 10;
 
 	if(isset($_POST['depto']) && $_POST['depto']!='nada'){
-		$cond=' AND a.cod_depto='.$_POST['depto'].' ';
+		$cond=' AND a.cod_user='.$_POST['depto'].' ';
 	} else {
 		$cond=' ';
 	}
@@ -57,12 +57,12 @@
 	$d=0;
 	$items = array();
 	while($row = mysql_fetch_object($rs)){
-		$total_footer=$total_footer + $row->multi;
 		if($d!=$row->cod_user && $d!=0) {
 			array_push($items, array('cod_cons'=>'Total '.$titu, 'multi'=>strval($total_footer)));
 			
 			$total_footer=0;			
 		}
+		$total_footer=$total_footer + $row->multi;
 		array_push($items, $row);
 		$titu=$row->nombre_user;
 		$d=$row->cod_user;	

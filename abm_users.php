@@ -88,7 +88,7 @@ require_once("menu.php");?>
 	</div>
 	<div id="dlg-buttons">
 		<a href="#" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveArea();" style="width:90px">Guardar</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">Cancelar</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('.red').remove();$('#dlg').dialog('close')" style="width:90px">Cancelar</a>
 	</div>
 	
 	<div id="dlgPass" class="easyui-dialog" style="width:400px;height:200;padding:10px 20px"
@@ -113,7 +113,7 @@ require_once("menu.php");?>
 	
 	<div id="dlgPass-buttons">
 		<a href="#" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="savePass();" style="width:90px">Guardar</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlgPass').dialog('close')" style="width:90px">Cancelar</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('.red').remove();$('#dlgPass').dialog('close')" style="width:90px">Cancelar</a>
 	</div>
 	
 	<script type="text/javascript">

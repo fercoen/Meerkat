@@ -111,7 +111,7 @@ require_once("menu.php");?>
 	</div>
 	<div id="dlg-buttons">
 		<a href="#" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveCon();" style="width:90px">Guardar</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">Cancelar</a>
+		<a href="javascript:$('.red').remove();void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('.red').remove();$('.red').remove();$('#dlg').dialog('close')" style="width:90px">Cancelar</a>
 	</div>
 		
 		<div id="dlgDetalle" class="easyui-dialog" data-options="top:150" style="width:500px;height:600;padding:10px 20px"
@@ -160,7 +160,7 @@ require_once("menu.php");?>
 		</form>
 	</div>
 	<div id="dlgDetalle-buttons">
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick="javascript:$('#dlgDetalle').dialog('close')" style="width:90px">Aceptar</a>
+		<a href="javascript:$('.red').remove();void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick="javascript:$('.red').remove();$('#dlgDetalle').dialog('close')" style="width:90px">Aceptar</a>
 	</div>
 
 	<div id="dlgDeposito" class="easyui-dialog" data-options="top:150" style="width:400px;height:200;padding:10px 20px"
@@ -188,7 +188,7 @@ require_once("menu.php");?>
 	</div>
 	<div id="dlgDeposito-buttons">
 		<a href="#" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="aDeposito();" style="width:90px">Aceptar</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlgDeposito').dialog('close')" style="width:90px">Cancelar</a>
+		<a href="javascript:$('.red').remove();void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('.red').remove();$('#dlgDeposito').dialog('close')" style="width:90px">Cancelar</a>
 	</div>
 	
 	<div id="dlgBaja" class="easyui-dialog" data-options="top:150" style="width:400px;height:200;padding:10px 20px" closed="true" buttons="#dlgBaja-buttons">
@@ -205,7 +205,7 @@ require_once("menu.php");?>
 	</div>
 	<div id="dlgBaja-buttons">
 		<a href="#" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="Baja();" style="width:90px">Aceptar</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlgBaja').dialog('close')" style="width:90px">Cancelar</a>
+		<a href="javascript:$('.red').remove();void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('.red').remove();$('#dlgBaja').dialog('close')" style="width:90px">Cancelar</a>
 	</div>
 
 	<div id="dlgRecicle" class="easyui-dialog" data-options="top:150" style="width:400px;height:300;padding:10px 20px"	closed="true" buttons="#dlgRecicle-buttons">
@@ -243,7 +243,7 @@ require_once("menu.php");?>
 	</div>
 	<div id="dlgRecicle-buttons">
 		<a href="#" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="aRecicle();" style="width:90px">Aceptar</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlgRecicle').dialog('close')" style="width:90px">Cancelar</a>
+		<a href="javascript:$('.red').remove();void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('.red').remove();$('#dlgRecicle').dialog('close')" style="width:90px">Cancelar</a>
 	</div>
 
 	<div id="dlgAct" class="easyui-dialog" data-options="top:150" style="width:400px;height:200;padding:10px 20px"	closed="true" buttons="#dlgAct-buttons">
@@ -286,7 +286,7 @@ require_once("menu.php");?>
 	</div>
 	<div id="dlgAct-buttons">
 		<a href="#" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="aActivar();" style="width:90px">Aceptar</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlgAct').dialog('close')" style="width:90px">Cancelar</a>
+		<a href="javascript:$('.red').remove();void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('.red').remove();$('#dlgAct').dialog('close')" style="width:90px">Cancelar</a>
 	</div>
 	<div id="dlgAsignar" class="easyui-dialog" data-options="top:150" style="width:400px;height:300;padding:10px 20px"	closed="true" buttons="#dlgAsignar-buttons">
 		<div class="ftitle">Confirmar</div>
@@ -330,7 +330,7 @@ require_once("menu.php");?>
 	</div>
 	<div id="dlgAsignar-buttons">
 		<a href="#" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="aAsignar();" style="width:90px">Aceptar</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlgAsignar').dialog('close')" style="width:90px">Cancelar</a>
+		<a href="javascript:$('.red').remove();void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('.red').remove();$('#dlgAsignar').dialog('close')" style="width:90px">Cancelar</a>
 	</div>
 	
 
@@ -369,7 +369,7 @@ require_once("menu.php");?>
 	</div>
 	<div id="dlgComprar-buttons">
 		<a href="#" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="aComprar();" style="width:90px">Aceptar</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlgComprar').dialog('close')" style="width:90px">Cancelar</a>
+		<a href="javascript:$('.red').remove();void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('.red').remove();$('#dlgComprar').dialog('close')" style="width:90px">Cancelar</a>
 	</div>
 	
 	<div id="dlgDescartar" class="easyui-dialog" data-options="top:150" style="width:400px;height:300;padding:10px 20px"	closed="true" buttons="#dlgDescartar-buttons">
@@ -394,7 +394,7 @@ require_once("menu.php");?>
 	</div>
 	<div id="dlgDescartar-buttons">
 		<a href="#" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="aDescartar();" style="width:90px">Aceptar</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlgDescartar').dialog('close')" style="width:90px">Cancelar</a>
+		<a href="javascript:$('.red').remove();void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('.red').remove();$('#dlgDescartar').dialog('close')" style="width:90px">Cancelar</a>
 	</div>
 
 
@@ -521,7 +521,7 @@ require_once("menu.php");?>
 					}
 				}
             });
-            }catch(e){console.log(e.message())}
+            }catch(e){console.log(e)}
 		}
 		function aComprar(){
             try{
@@ -543,7 +543,7 @@ require_once("menu.php");?>
 					}
 				}
             });
-            }catch(e){console.log(e.message())}
+            }catch(e){console.log(e)}
 		}
 
 		function aDescartar(){
@@ -566,7 +566,7 @@ require_once("menu.php");?>
 					}
 				}
             });
-            }catch(e){console.log(e.message())}
+            }catch(e){console.log(e)}
 		}
 		function aRecicle(){
             try{
@@ -588,7 +588,7 @@ require_once("menu.php");?>
 					}
 				}
             });
-            }catch(e){console.log(e.message())}
+            }catch(e){console.log(e)}
 		}
 		function enviarDeposito(){
 			var row =$('#dg').datagrid('getSelected');
@@ -619,7 +619,7 @@ require_once("menu.php");?>
 					}
 				}
             });
-            }catch(e){console.log(e.message())}
+            }catch(e){console.log(e)}
 		}			
 		function aActivar(){
             try{
@@ -641,7 +641,7 @@ require_once("menu.php");?>
 					}
 				}
             });
-            }catch(e){console.log(e.message())}
+            }catch(e){console.log(e)}
 		}			
 		function aAsignar(){
             try{
@@ -663,7 +663,7 @@ require_once("menu.php");?>
 					}
 				}
             });
-            }catch(e){console.log(e.message())}
+            }catch(e){console.log(e)}
 		}
 		function saveCon(){
             try{
@@ -681,12 +681,13 @@ require_once("menu.php");?>
 						});
 					} else {
 						// close the dialog
-						$('#dlg').dialog('close');		
+						$('#dlg').dialog('close');	
+						$('.red').remove();
 						$('#dg').datagrid('reload');	// reload the user data
 					}
 				}
             });
-            }catch(e){console.log(e.message())}
+            }catch($e){console.log($e);}
 		}
 		$('#dg').datagrid({
 		    onClickRow: function(index,row){
@@ -734,6 +735,9 @@ require_once("menu.php");?>
 		    		$('#toolbar').find('.descartar').removeAttr("onclick"),
 		    		$('#toolbar').find('.descartar').css('cursor', 'default');
 		    		$('#toolbar').find('.descartar').css('opacity', 0.5);
+		    		$('#toolbar').find('.edit').removeAttr("onclick"),
+		    		$('#toolbar').find('.edit').css('cursor', 'default');
+		    		$('#toolbar').find('.edit').css('opacity', 0.5);
 		    		//$('#toolbar').find('.deposito').hide();
 		    	}
 		    	if(row.recicla_cons<=0){
