@@ -18,9 +18,9 @@ require_once("menu.php");?>
 			</tr>
 		</thead>
 	</table>
-	<div id="toolbar">
+	<!--<div id="toolbar">
 		<a href="" id="btnExport" class="easyui-linkbutton new" iconCls="icon-add" plain="true">Exportar</a>
-	</div>
+	</div>-->
 	
     <script type="text/javascript">
         $(function(){

@@ -25,20 +25,22 @@
 			$('.red').remove();
 			form.find(':input').each(function(){
 			    if(!$(this).attr('required')){
-			        console.log($(this)); 
+			        //console.log($(this)); 
 			    } else {
 					if($(this).hasClass('easyui-combobox') && $(this).combobox('getValue')==''){
 						fail = true;
+			        	console.log($(this)); 
 	                    $(this).next().after('<div class="red" style="color:red">Debe ingresar este dato</div>');
 	                } else if($(this).hasClass('easyui-datebox') && $(this).datebox('getValue')==''){
 						fail = true;
+			        	console.log($(this)); 
 	                    $(this).next().after('<div class="red" style="color:red">Debe ingresar este dato</div>');
 	                } else if(!$(this).hasClass('easyui-combobox') && !$(this).hasClass('easyui-datebox') && !$(this).val()){
 	                	fail = true;
+			        	console.log($(this)); 
 	                    $(this).next().after('<div class="red" style="color:red">Debe ingresar este dato</div>');
 	               
-	                }			
-						
+	                } 					
 			    }
 			});
 			if ( fail ) {

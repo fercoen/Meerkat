@@ -27,7 +27,48 @@ require_once("menu.php");?>
 		<form id="fm" method="post" novalidate>
 			<div class="fitem" hidden>
 				<label>Codigo:</label>			
-				<input name="cod_depto" class="easyui-textbox" required="true">
+				<input name="cod_depto" class="easyui-textbox">
+			</div>
+			<div class="fitem">
+				<label>Descripcion:</label>
+				<input name="desc_depto" class="easyui-textbox" required="true">
+			</div>
+			<div class="fitem">
+				<label>Responsable:</label>
+				<input class="easyui-combobox" name="user"
+					data-options="
+						url:'modules/users/get_users_hab.php',
+						valueField:'cod_user',
+						textField:'nombre_user',
+						panelHeight:'auto'
+				" required="true">
+			</div>
+			
+		<div class="fitem">
+				<label>Area:</label>
+				<input class="easyui-combobox" name="area"
+					data-options="
+						url:'modules/areas/get_areas_hab.php',
+						valueField:'cod_area',
+						textField:'des_area',
+						panelHeight:'auto'
+				" required="true">
+			</div>		
+		
+		</form>
+	</div>
+	<div id="dlg-buttons">
+		<a href="#" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveArea();" style="width:90px">Guardar</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('.red').remove();$('#dlg').dialog('close')" style="width:90px">Cancelar</a>
+	</div>
+	
+	<div id="dlgEdit" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
+			closed="true" buttons="#dlgEdit-buttons">
+		<div class="ftitle">Informacion del Departamento</div>
+		<form id="fmEd" method="post" novalidate>
+			<div class="fitem" hidden>
+				<label>Codigo:</label>			
+				<input name="cod_depto" class="easyui-textbox">
 			</div>
 			<div class="fitem">
 				<label>Descripcion:</label>
@@ -67,9 +108,9 @@ require_once("menu.php");?>
 			</div>	
 		</form>
 	</div>
-	<div id="dlg-buttons">
-		<a href="#" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveArea();" style="width:90px">Guardar</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('.red').remove();$('#dlg').dialog('close')" style="width:90px">Cancelar</a>
+	<div id="dlgEdit-buttons">
+		<a href="#" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveEArea();" style="width:90px">Guardar</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('.red').remove();$('#dlgEdit').dialog('close')" style="width:90px">Cancelar</a>
 	</div>
 	<script type="text/javascript">
 		var url;
@@ -81,11 +122,11 @@ require_once("menu.php");?>
 		function editArea(){
 			var row = $('#dg').datagrid('getSelected');
 			if (row){
-				$('#dlg').dialog('open').dialog('setTitle','Editar Departamento');
+				$('#dlgEdit').dialog('open').dialog('setTitle','Editar Departamento');
 				row.user = row.cod_user;
                 row.estado = row.cod_estado;
 				row.area = row.cod_area;
-				$('#fm').form('load',row);
+				$('#fmEd').form('load',row);
 				url = 'modules/deptos/update_depto.php';
 			}
 		}
@@ -104,6 +145,27 @@ require_once("menu.php");?>
 						});
 					} else {
 						$('#dlg').dialog('close');		// close the dialog
+						$('#dg').datagrid('reload');	// reload the user data
+					}
+				}
+            });
+            }catch(e){console.log(e.message())}
+		}
+		function saveEArea(){
+            try{
+			$('#fmEd').form('submit',{
+				url: url,
+                onSubmit: function(){
+                	if(!validate($(this))) return false;
+				},
+				success: function(result){
+					if (result.errorMsg){
+						$.messager.show({
+							title: 'Error',
+							msg: result.errorMsg
+						});
+					} else {
+						$('#dlgEdit').dialog('close');		// close the dialog
 						$('#dg').datagrid('reload');	// reload the user data
 					}
 				}

@@ -308,7 +308,7 @@ require_once("menu.php");?>
 						panelHeight:'auto',
 						onSelect:function(row){
 								deshabilitar_user(row)}
-				" required="true">
+				" >
 			</div>
 			<div class="fitem">
 				<label>Usuario:</label>
@@ -320,7 +320,7 @@ require_once("menu.php");?>
 						panelHeight:'auto',
 						onSelect:function(row){
 								deshabilitar_depto(row)}
-				" required="true">
+				">
 			</div>	
 			<div class="fitem">
 				<label>Cantidad:</label>

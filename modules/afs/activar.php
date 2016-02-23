@@ -1,6 +1,6 @@
 <?php
 $cod_af = htmlspecialchars($_REQUEST['cod_af']);
-$cod_estado = 1;
+$cod_estado = 3;
 
 
 include '../../include/conectar.php';

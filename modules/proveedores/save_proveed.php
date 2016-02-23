@@ -5,7 +5,7 @@ $tel_prov = htmlspecialchars($_REQUEST['tel_prov']);
 $mail_prov = htmlspecialchars($_REQUEST['mail_prov']);
 $contacto_prov = htmlspecialchars($_REQUEST['contacto_prov']);
 $recicla_prov = htmlspecialchars($_REQUEST['recicla']);
-$cod_estado = htmlspecialchars($_REQUEST['estado']);
+$cod_estado = 1;
 
 include '../../include/conectar.php';
 

@@ -29,7 +29,48 @@ require_once("menu.php");?>
 		<form id="fm" method="post" novalidate>
 			<div class="fitem" hidden>
 				<label>Codigo:</label>			
-				<input name="cod_prov" class="easyui-textbox" required="true">
+				<input name="cod_prov" class="easyui-textbox">
+			</div>
+			<div class="fitem">
+				<label>Nombre:</label>
+				<input name="nombre_prov" class="easyui-textbox" required="true">
+			</div>
+			
+			<div class="fitem">
+				<label>Telefono:</label>
+				<input name="tel_prov" class="easyui-textbox" required="true">
+			</div>
+		
+			<div class="fitem">
+				<label>E-mail:</label>
+				<input name="mail_prov" class="easyui-textbox" required="true">
+			</div>
+			<div class="fitem">
+				<label>Contacto:</label>
+				<input name="contacto_prov" class="easyui-textbox" required="true">
+			</div>
+			<div class="fitem">
+				<label>Recicla?:</label>
+				<select class="easyui-combobox" name="recicla" required="true" style="width:60px;"  data-options="panelHeight:'auto'">
+				<option value="S">Si</option>
+				<option value="N">No</option>
+				</select>
+			</div>
+		
+		</form>
+	</div>
+	<div id="dlg-buttons">
+		<a href="#" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveArea();" style="width:90px">Guardar</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('.red').remove();$('#dlg').dialog('close')" style="width:90px">Cancelar</a>
+	</div>
+	
+	<div id="dlgEdit" class="easyui-dialog" style="width:400px;height:375;padding:10px 20px"
+			closed="true" buttons="#dlgEdit-buttons">
+		<div class="ftitle">Informacion del Usuario</div>
+		<form id="fmEd" method="post" novalidate>
+			<div class="fitem" hidden>
+				<label>Codigo:</label>			
+				<input name="cod_prov" class="easyui-textbox">
 			</div>
 			<div class="fitem">
 				<label>Nombre:</label>
@@ -69,9 +110,9 @@ require_once("menu.php");?>
 			</div>	
 		</form>
 	</div>
-	<div id="dlg-buttons">
-		<a href="#" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveArea();" style="width:90px">Guardar</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('.red').remove();$('#dlg').dialog('close')" style="width:90px">Cancelar</a>
+	<div id="dlgEdit-buttons">
+		<a href="#" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveEArea();" style="width:90px">Guardar</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('.red').remove();$('#dlgEdit').dialog('close')" style="width:90px">Cancelar</a>
 	</div>
 	
 	<script type="text/javascript">
@@ -84,10 +125,10 @@ require_once("menu.php");?>
 		function editArea(){
 			var row = $('#dg').datagrid('getSelected');
 			if (row){
-				$('#dlg').dialog('open').dialog('setTitle','Editar Proveedor');
+				$('#dlgEdit').dialog('open').dialog('setTitle','Editar Proveedor');
 				row.recicla = row.recicla_prov;
                 row.estado = row.cod_estado;
-				$('#fm').form('load',row);
+				$('#fmEd').form('load',row);
 				url = 'modules/proveedores/update_proveed.php';
 			}
 		}
@@ -107,6 +148,28 @@ require_once("menu.php");?>
 						});
 					} else {
 						$('#dlg').dialog('close');		// close the dialog
+						$('#dg').datagrid('reload');	// reload the user data
+					}
+				}
+            });
+            }catch(e){console.log(e.message())}
+		}
+		
+		function saveEArea(){
+            try{
+			$('#fmEd').form('submit',{
+				url: url,
+                onSubmit: function(){
+                	if(!validate($(this))) return false;
+				},
+				success: function(result){
+					if (result.errorMsg){
+						$.messager.show({
+							title: 'Error',
+							msg: result.errorMsg
+						});
+					} else {
+						$('#dlgEdit').dialog('close');		// close the dialog
 						$('#dg').datagrid('reload');	// reload the user data
 					}
 				}

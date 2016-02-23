@@ -6,7 +6,7 @@ $cod_user = htmlspecialchars($_REQUEST['user']);
 
 include '../../include/conectar.php';
 
-$sql = "insert into areas(des_area,cod_estado,cod_user) values('$des_area','$cod_estado','$cod_user')";
+$sql = "insert into areas(des_area,cod_estado,cod_user) values('$des_area','1','$cod_user')";
 
 $result = @mysql_query($sql);
 if ($result){

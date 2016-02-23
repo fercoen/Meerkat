@@ -38,7 +38,7 @@ require_once("menu.php");?>
 		<form id="fm" method="post" novalidate>
 			<div class="fitem" hidden>
 				<label>Cod_af:</label>			
-				<input name="cod_af" class="easyui-textbox" required="true">
+				<input name="cod_af" class="easyui-textbox" >
 			</div>
 			<div class="fitem">
 				<label>Codigo:</label>			
@@ -292,7 +292,7 @@ require_once("menu.php");?>
 						panelHeight:'auto',
 						onSelect:function(row){
 								deshabilitar_user(row)}
-				" required="true">
+				" >
 			</div>
 			<div class="fitem">
 				<label>Usuario:</label>
@@ -304,7 +304,7 @@ require_once("menu.php");?>
 						panelHeight:'auto',
 						onSelect:function(row){
 								deshabilitar_depto(row)}
-				" required="true">
+				">
 			</div>	
 		</form>
 	</div>
